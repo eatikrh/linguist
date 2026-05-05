@@ -329,6 +329,7 @@ This is a list of grammars that Linguist selects to provide syntax highlighting 
 - **KiCad Schematic:** [Alhadis/language-pcb](https://github.com/Alhadis/language-pcb)
 - **Kickstart:** [wgwoods/language-kickstart](https://github.com/wgwoods/language-kickstart)
 - **Kit:** [atom/language-html](https://github.com/atom/language-html)
+- **Kleis:** [eatikrh/vscode-kleis](https://github.com/eatikrh/vscode-kleis)
 - **KoLmafia ASH:** [midgleyc/vscode-kolmafia-ash](https://github.com/midgleyc/vscode-kolmafia-ash)
 - **Koka:** [koka-community/koka-textmate-grammar](https://github.com/koka-community/koka-textmate-grammar)
 - **Kotlin:** [nishtahir/language-kotlin](https://github.com/nishtahir/language-kotlin)

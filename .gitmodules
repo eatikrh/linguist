@@ -1455,6 +1455,9 @@
 [submodule "vendor/grammars/vscode-kdl"]
 	path = vendor/grammars/vscode-kdl
 	url = https://github.com/kdl-org/vscode-kdl.git
+[submodule "vendor/grammars/vscode-kleis"]
+	path = vendor/grammars/vscode-kleis
+	url = https://github.com/eatikrh/vscode-kleis.git
 [submodule "vendor/grammars/vscode-kolmafia-ash"]
 	path = vendor/grammars/vscode-kolmafia-ash
 	url = https://github.com/midgleyc/vscode-kolmafia-ash

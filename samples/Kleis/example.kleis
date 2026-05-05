@@ -1,11 +1,15 @@
 // ============================================
-// Kleis Language v0.7 - Complete Syntax Example
+// Kleis Language v0.98 - Complete Syntax Example
 // For syntax highlighting testing
 // ============================================
 
+// --- Imports (v0.96) ---
+import LinearAlgebra
+import Analysis.Calculus
+
 // --- Annotations ---
 @library("kleis-examples")
-@version("0.7.0")
+@version("0.98.0")
 
 // --- Type Alias ---
 type Scalar = ℝ
@@ -383,9 +387,76 @@ define indexed(x: ℝ) = x_{1}^{2} + x_{2}^{2}
 // Inline comment after code
 define commented(x: ℝ) = x × x  // squares the input
 
+// ============================================
+// v0.96+ FEATURES
+// ============================================
+
+// --- Named arguments (v0.96) ---
+define gaussian(x: ℝ, mu: ℝ, sigma: ℝ) =
+    (1 / (sigma × √(2×π))) × e^(-(x - mu)² / (2 × sigma²))
+
+define standard_normal(x: ℝ) = gaussian(x, mu = 0, sigma = 1)
+
+// --- ASCII logical operators (v0.97) ---
+define implies(p: 𝔹, q: 𝔹) = (not p) or q
+
+axiom de_morgan:
+    ∀(P Q : 𝔹). not (P and Q) = (not P) or (not Q)
+
+// --- Additional types (v0.98) ---
+define unit_val : Unit = ()
+define scalar_val : Scalar = 1.0
+define bits : BitVec = 0b10110
+
+data TensorField(n: Nat) = TensorField(components: Tensor(n, n, ℝ))
+
+// --- Big operator keywords (v0.98) ---
+define bounded_sum(n: ℕ) = sum_bounds(i, 1, n, i²)
+define bounded_prod(n: ℕ) = prod_bounds(i, 1, n, 2×i)
+define bounded_int(a: ℝ, b: ℝ) = int_bounds(x, a, b, x²)
+define set_sum(S: Set(ℝ)) = sum_set(x, S, x²)
+define conditional_sum(n: ℕ) = sum_where(i, 1, n, i, gcd(i, n) = 1)
+define measure_int(f: ℝ → ℝ) = integral_measure(x, f(x), "lebesgue")
+define loop_int(f: ℂ → ℂ) = contour_integral(z, f(z), "unit_circle")
+define lim_at_inf(f: ℝ → ℝ) = limit_inf(x, f(x))
+define lim_neg(f: ℝ → ℝ) = limit_neg_inf(x, f(x))
+define supremum(S: Set(ℝ)) = sup(S)
+define infimum(S: Set(ℝ)) = inf(S)
+define essential_sup(f: ℝ → ℝ) = ess_sup(f)
+define best_arg(f: ℝ → ℝ) = argmax(x, f(x))
+define worst_arg(f: ℝ → ℝ) = argmin(x, f(x))
+define path_integral(f: ℂ → ℂ) = oint(z, f(z))
+define expected(X: ℝ) = E(X)
+define variance(X: ℝ) = Var(X)
+define fourier(f: ℝ → ℂ, n: ℤ) = fourier_coeff(f, n)
+
+// --- Utility functions ---
+define minimum(a: ℝ, b: ℝ) = min(a, b)
+define maximum(a: ℝ, b: ℝ) = max(a, b)
+define divisor(a: ℤ, b: ℤ) = gcd(a, b)
+define multiple(a: ℤ, b: ℤ) = lcm(a, b)
+
+// --- Example and assert blocks (v0.96) ---
+example "vector addition is commutative" {
+    let v1 = [1, 2, 3]
+    let v2 = [4, 5, 6]
+    assert v1 ⊕ v2 = v2 ⊕ v1
+}
+
+// --- Multiline integrals ---
+define surface_area(f: ℝ² → ℝ) = ∬(f)
+define volume_int(f: ℝ³ → ℝ) = ∭(f)
+define flux(F: ℝ³ → ℝ³) = ∮(F)
+define surface_flux(F: ℝ³ → ℝ³) = ∯(F)
+
+// --- Builtin functions ---
+define matrix_norm(A: Matrix(n, n, ℝ)) = builtin_norm(A)
+define eigenvalues(A: Matrix(n, n, ℂ)) = builtin_eig(A)
+
 /*
-  End of Kleis v0.7 syntax example.
+  End of Kleis v0.98 syntax example.
   All grammar features demonstrated:
+  - Imports (v0.96)
   - Annotations (@library, @version)
   - Type aliases
   - Data types (ADR-021)
@@ -395,6 +466,14 @@ define commented(x: ℝ) = x × x  // squares the input
   - Function definitions
   - All expression types
   - Calculus notation (v0.7 Mathematica-style)
+  - Named arguments (v0.96)
+  - ASCII logical operators (v0.97)
+  - Big operator keywords (v0.98)
+  - Additional types: Unit, Scalar, BitVec, Tensor
+  - Utility functions: min, max, gcd, lcm
+  - Example and assert blocks (v0.96)
+  - Multiline integrals
+  - Builtin functions
   - All operators
   - Symbolic constants
   - Full type system

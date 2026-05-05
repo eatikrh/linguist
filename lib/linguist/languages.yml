@@ -4002,8 +4002,6 @@ Kleis:
   tm_scope: source.kleis
   ace_mode: text
   language_id: 461904564
-  aliases:
-  - kleis
 KoLmafia ASH:
   type: programming
   color: "#B9D9B9"
